@@ -125,14 +125,6 @@ A living canvas of mathematical visualizations and explorations. Interactive, br
 
 <br/>
 
-<div align="center">
-
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=l12-krts&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=c9933a&icon_color=c9a96e&text_color=f5deb3&ring_color=c9933a" alt="stats"/>
-&nbsp;&nbsp;
-<img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=l12-krts&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=c9933a&text_color=f5deb3&langs_count=8" alt="top langs"/>
-
-</div>
-
 <br/>
 
 <div align="center">
