@@ -1,14 +1,8 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:2a1f0e,100:c9933a&height=220&section=header&text=l12-krts&fontSize=90&fontFamily=Syne&fontColor=f5deb3&fontAlignY=40&desc=builder%20of%20languages%2C%20tools%20%26%20systems&descAlignY=60&descSize=18&descColor=c9a96e" alt="banner"/>
-
-</div>
-
-<div align="center">
-
-[![Website](https://img.shields.io/badge/l12gg.vercel.app-1a1a1a?style=for-the-badge&logo=vercel&logoColor=f5deb3)](https://l12gg.vercel.app)
-[![Location](https://img.shields.io/badge/Athens,%20Greece-1a1a1a?style=for-the-badge&logo=googlemaps&logoColor=c9933a)](https://github.com/l12-krts)
-[![WSlang](https://img.shields.io/badge/wslang.vercel.app-1a1a1a?style=for-the-badge&logo=dart&logoColor=00d2ff)](https://wslang.vercel.app)
+[![Website](https://img.shields.io/badge/l12gg.vercel.app-1a1a1a?style=for-the-badge&logo=vercel&logoColor=ffffff)](https://l12gg.vercel.app)
+[![Location](https://img.shields.io/badge/Athens,%20Greece-1a1a1a?style=for-the-badge&logo=googlemaps&logoColor=ffffff)](https://github.com/l12-krts)
+[![WSlang](https://img.shields.io/badge/wslang.vercel.app-1a1a1a?style=for-the-badge&logo=dart&logoColor=ffffff)](https://wslang.vercel.app)
 
 </div>
 
