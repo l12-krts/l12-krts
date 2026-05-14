@@ -20,7 +20,7 @@
 :: ABOUT
 ```
 
-I build languages, desktop tools, web apps, and AI systems — mostly for the love of it.
+I build languages, desktop tools, web apps, and AI systems  mostly for the love of it.
 Currently deep in scripting language design, cross-platform desktop apps, and multi-agent AI platforms.
 Based in Athens, grinding late nights on things that probably shouldn't exist.
 
@@ -75,7 +75,7 @@ Based in Athens, grinding late nights on things that probably shouldn't exist.
 <td width="50%" valign="top">
 
 ### [WSlang](https://github.com/l12-krts/wslang)
-**Well.. Simple** — A scripting language with graphics, cryptography, JSON, and file I/O, built entirely in Dart. Ships with its own package manager (`wpm`) and version manager (`wvm`). Cross-platform executables for Linux, macOS, and Windows.
+**Well.. Simple**  A scripting language with graphics, cryptography, JSON, and file I/O, built entirely in Dart. Ships with its own package manager (`wpm`) and version manager (`wvm`). Cross-platform executables for Linux, macOS, and Windows.
 
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
 ![v1.2.2](https://img.shields.io/badge/v1.2.2-c9933a?style=flat-square)
@@ -97,7 +97,7 @@ Minimal Tauri desktop notes app for programmers. Features inline block chips (`c
 <td width="50%" valign="top">
 
 ### [wpm](https://github.com/l12-krts/wpm)
-Zip-based package manager and runner for WSlang packages. Git-based distribution — install libraries straight from repositories. Part of the WSlang ecosystem.
+Zip-based package manager and runner for WSlang packages. Git-based distribution  install libraries straight from repositories. Part of the WSlang ecosystem.
 
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white)
 ![WSlang](https://img.shields.io/badge/ecosystem-wslang-c9933a?style=flat-square)
