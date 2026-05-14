@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>l12-krts — Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Onest:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+  :root {
+    --c1: #0d1117;
+    --c2: #2a1f0e;
+    --c3: #c9933a;
+    --c4: #f5deb3;
+    --c5: #c9a96e;
+    --c6: #1a1208;
+    --c-surface: #111820;
+    --c-card: #141c26;
+    --radius-card: 36px;
+    --radius-inner: 12px;
+    --radius-pill: 9999px;
+    --ease-in-anim: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-dur: 0.55s;
+    --spring-general: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --spring-general-dur: 0.45s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--c1);
+    color: var(--c4);
+    font-family: 'Onest', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* hero */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 80% 30%, rgba(201, 147, 58, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 70%, rgba(42, 31, 14, 0.8) 0%, transparent 60%),
+      linear-gradient(160deg, #0a0d12 0%, #0d1117 40%, #1a1208 100%);
+    z-index: 0;
+  }
+
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201, 147, 58, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 147, 58, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201, 147, 58, 0.12);
+    border: 1px solid rgba(201, 147, 58, 0.25);
+    border-radius: var(--radius-pill);
+    padding: 6px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--c3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    animation-delay: 0.1s;
+  }
+
+  .hero-tag .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--c3);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(72px, 10vw, 130px);
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    color: var(--c4);
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    animation-delay: 0.2s;
+  }
+
+  .hero-name span {
+    color: var(--c3);
+  }
+
+  .hero-desc {
+    margin-top: 24px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--c5);
+    max-width: 500px;
+    line-height: 1.5;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    animation-delay: 0.3s;
+  }
+
+  .hero-links {
+    margin-top: 36px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    animation-delay: 0.4s;
+  }
+
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 222, 179, 0.06);
+    border: 1px solid rgba(245, 222, 179, 0.12);
+    border-radius: var(--radius-pill);
+    padding: 10px 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c4);
+    text-decoration: none;
+    transition: background-color 200ms, transform 200ms var(--spring-general);
+  }
+
+  .link-pill:hover {
+    background: rgba(201, 147, 58, 0.15);
+    transform: scale(1.03);
+  }
+
+  .link-pill.primary {
+    background: var(--c3);
+    color: var(--c6);
+    border-color: var(--c3);
+  }
+
+  .link-pill.primary:hover {
+    background: #daa84a;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    right: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--c5);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    z-index: 2;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    animation-delay: 0.6s;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--c5));
+    animation: expandLine 1.2s var(--ease-in-anim) both;
+    animation-delay: 0.8s;
+  }
+
+  @keyframes expandLine {
+    from { width: 0; opacity: 0; }
+    to { width: 40px; opacity: 1; }
+  }
+
+  /* main layout */
+  .main {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c3);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '::';
+    opacity: 0.6;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 147, 58, 0.3), transparent);
+  }
+
+  /* stack section */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+    margin-bottom: 80px;
+  }
+
+  .stack-item {
+    background: var(--c-card);
+    border: 1px solid rgba(245, 222, 179, 0.07);
+    border-radius: 20px;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--c5);
+    letter-spacing: 0.04em;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+  }
+
+  .stack-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  /* projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 80px;
+  }
+
+  .project-card {
+    background: var(--c-card);
+    border: 1px solid rgba(245, 222, 179, 0.07);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--c3), transparent);
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .project-card.featured .project-vis {
+    flex-shrink: 0;
+    width: 220px;
+    height: 160px;
+    border-radius: var(--radius-inner);
+    background: rgba(201, 147, 58, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--c4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .project-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 150ms;
+  }
+
+  .project-name a:hover { color: var(--c3); }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--c5);
+    line-height: 1.6;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .tag {
+    border-radius: var(--radius-pill);
+    height: 24px;
+    padding: 0 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    background: rgba(201, 147, 58, 0.1);
+    border: 1px solid rgba(201, 147, 58, 0.2);
+    color: var(--c3);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .tag.lang {
+    background: rgba(0, 210, 255, 0.08);
+    border-color: rgba(0, 210, 255, 0.2);
+    color: #7ad4e4;
+  }
+
+  /* stats section */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  .stat-card {
+    background: var(--c-card);
+    border: 1px solid rgba(245, 222, 179, 0.07);
+    border-radius: var(--radius-card);
+    padding: 28px 24px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+  }
+
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--c3);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c5);
+  }
+
+  /* lang bars */
+  .lang-bars {
+    background: var(--c-card);
+    border: 1px solid rgba(245, 222, 179, 0.07);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    margin-bottom: 80px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+  }
+
+  .lang-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .lang-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c4);
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  .lang-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(245, 222, 179, 0.08);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+
+  .lang-fill {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    animation: growWidth 1.2s var(--ease-in-anim) both;
+    animation-delay: 0.4s;
+  }
+
+  @keyframes growWidth {
+    from { width: 0 !important; }
+  }
+
+  .lang-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--c5);
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* activity canvas */
+  .activity-section {
+    margin-bottom: 80px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+  }
+
+  #activity-canvas {
+    width: 100%;
+    border-radius: 20px;
+    background: var(--c-card);
+    border: 1px solid rgba(245, 222, 179, 0.07);
+  }
+
+  /* terminal card */
+  .terminal {
+    background: #0a0d0f;
+    border: 1px solid rgba(245, 222, 179, 0.1);
+    border-radius: var(--radius-card);
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 80px;
+    animation: fadeUp var(--ease-in-dur) var(--ease-in-anim) both;
+  }
+
+  .terminal-bar {
+    background: #161b22;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .t-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-body {
+    padding: 28px 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+  }
+
+  .t-prompt { color: var(--c3); }
+  .t-cmd { color: #7dd3fc; }
+  .t-comment { color: #6b7280; }
+  .t-string { color: #86efac; }
+  .t-key { color: var(--c4); }
+  .t-num { color: #c084fc; }
+  .t-cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--c3);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1.2s infinite;
+  }
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  /* footer */
+  .profile-footer {
+    border-top: 1px solid rgba(245, 222, 179, 0.07);
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--c3);
+  }
+
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--c5);
+    letter-spacing: 0.06em;
+  }
+
+  /* wslang vis */
+  .ws-vis {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      <span>Open to work &bull; Athens, Greece</span>
+    </div>
+    <h1 class="hero-name">l12<span>-krts</span></h1>
+    <p class="hero-desc">
+      Builder of languages, tools, and systems.
+      Full-stack developer working across Python, Dart, React, and Swift.
+    </p>
+    <div class="hero-links">
+      <a class="link-pill primary" href="https://l12gg.vercel.app" target="_blank">
+        <span class="material-icons" style="font-size:16px">language</span>
+        l12gg.vercel.app
+      </a>
+      <a class="link-pill" href="https://github.com/l12-krts" target="_blank">
+        <span class="material-icons" style="font-size:16px">code</span>
+        GitHub
+      </a>
+      <a class="link-pill" href="https://wslang.vercel.app" target="_blank">
+        <span class="material-icons" style="font-size:16px">terminal</span>
+        WSlang Docs
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- STATS -->
+  <div class="section-label" data-animate>stats</div>
+  <div class="stats-row">
+    <div class="stat-card" style="animation-delay:0s">
+      <div class="stat-value">14</div>
+      <div class="stat-label">Repositories</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.06s">
+      <div class="stat-value">7</div>
+      <div class="stat-label">WSlang Releases</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.12s">
+      <div class="stat-value">4+</div>
+      <div class="stat-label">Languages Used</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.18s">
+      <div class="stat-value">GR</div>
+      <div class="stat-label">Athens, Greece</div>
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <div class="section-label" data-animate>stack</div>
+  <div class="stack-grid">
+    <div class="stack-item" style="animation-delay:0.00s"><span class="stack-icon">🐍</span>Python</div>
+    <div class="stack-item" style="animation-delay:0.04s"><span class="stack-icon">🎯</span>Dart</div>
+    <div class="stack-item" style="animation-delay:0.08s"><span class="stack-icon">⚡</span>JS</div>
+    <div class="stack-item" style="animation-delay:0.12s"><span class="stack-icon">🔷</span>TypeScript</div>
+    <div class="stack-item" style="animation-delay:0.16s"><span class="stack-icon">🍎</span>Swift</div>
+    <div class="stack-item" style="animation-delay:0.20s"><span class="stack-icon">⚛</span>React</div>
+    <div class="stack-item" style="animation-delay:0.24s"><span class="stack-icon">▲</span>Next.js</div>
+    <div class="stack-item" style="animation-delay:0.28s"><span class="stack-icon">💨</span>Tailwind</div>
+    <div class="stack-item" style="animation-delay:0.32s"><span class="stack-icon">🚀</span>FastAPI</div>
+    <div class="stack-item" style="animation-delay:0.36s"><span class="stack-icon">🦀</span>Rust</div>
+    <div class="stack-item" style="animation-delay:0.40s"><span class="stack-icon">🖥</span>Tauri</div>
+    <div class="stack-item" style="animation-delay:0.44s"><span class="stack-icon">🐧</span>Linux</div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section-label" data-animate>featured projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card featured" style="animation-delay:0s" data-animate>
+      <div class="project-vis">
+        <canvas id="wslang-canvas" width="220" height="160"></canvas>
+      </div>
+      <div style="flex:1">
+        <div class="project-name">
+          <a href="https://github.com/l12-krts/wslang" target="_blank">WSlang</a>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--c3);background:rgba(201,147,58,0.1);padding:3px 10px;border-radius:9999px;letter-spacing:0.06em">v1.2.2</span>
+        </div>
+        <p class="project-desc" style="margin-top:12px">
+          A custom scripting language built in Dart with graphics, JSON, cryptography, and file I/O. Ships cross-platform executables for Linux, macOS, and Windows. Ecosystem includes <strong style="color:var(--c4)">wpm</strong> (package manager) and <strong style="color:var(--c4)">wvm</strong> (version manager).
+        </p>
+        <div class="tag-row" style="margin-top:20px">
+          <span class="tag lang">Dart</span>
+          <span class="tag">7 releases</span>
+          <span class="tag">lang design</span>
+          <span class="tag">cross-platform</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" style="animation-delay:0.08s" data-animate>
+      <div class="project-name">
+        <a href="https://github.com/l12-krts/quicknote" target="_blank">QuickNote</a>
+      </div>
+      <p class="project-desc">
+        Minimal Tauri desktop notes app for programmers. Inline block chips for code, LaTeX, links, images, and files. Command palette with autocomplete, multi-note system, Markdown import/export.
+      </p>
+      <div class="tag-row">
+        <span class="tag lang">JavaScript</span>
+        <span class="tag">Tauri</span>
+        <span class="tag">desktop</span>
+        <span class="tag">v1.1</span>
+      </div>
+    </div>
+
+    <div class="project-card" style="animation-delay:0.12s" data-animate>
+      <div class="project-name">
+        <a href="https://github.com/l12-krts/wpm" target="_blank">wpm</a>
+      </div>
+      <p class="project-desc">
+        Zip-based package manager and runner for WSlang. Git-based distribution model — install, run, and share WSlang libraries from any repository.
+      </p>
+      <div class="tag-row">
+        <span class="tag lang">Dart</span>
+        <span class="tag">pkg manager</span>
+        <span class="tag">wslang ecosystem</span>
+      </div>
+    </div>
+
+    <div class="project-card" style="animation-delay:0.16s" data-animate>
+      <div class="project-name">
+        <a href="https://github.com/l12-krts/math-experiments" target="_blank">math-experiments</a>
+      </div>
+      <p class="project-desc">
+        A living collection of browser-based mathematical visualizations — geometry, physics, and interactive canvas experiments. Pure JavaScript.
+      </p>
+      <div class="tag-row">
+        <span class="tag lang">JavaScript</span>
+        <span class="tag">canvas</span>
+        <span class="tag">math viz</span>
+        <span class="tag">interactive</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LANG BARS -->
+  <div class="section-label" data-animate>languages by use</div>
+  <div class="lang-bars" data-animate>
+    <div class="lang-bar-row">
+      <span class="lang-name">JavaScript</span>
+      <div class="lang-track"><div class="lang-fill" style="width:72%;background:linear-gradient(90deg,#c9933a,#f0b959)"></div></div>
+      <span class="lang-pct">72%</span>
+    </div>
+    <div class="lang-bar-row">
+      <span class="lang-name">Python</span>
+      <div class="lang-track"><div class="lang-fill" style="width:58%;background:linear-gradient(90deg,#3776ab,#68b0d4)"></div></div>
+      <span class="lang-pct">58%</span>
+    </div>
+    <div class="lang-bar-row">
+      <span class="lang-name">Dart</span>
+      <div class="lang-track"><div class="lang-fill" style="width:44%;background:linear-gradient(90deg,#00bcd4,#7ad4e4)"></div></div>
+      <span class="lang-pct">44%</span>
+    </div>
+    <div class="lang-bar-row">
+      <span class="lang-name">TypeScript</span>
+      <div class="lang-track"><div class="lang-fill" style="width:35%;background:linear-gradient(90deg,#3178c6,#80b4e0)"></div></div>
+      <span class="lang-pct">35%</span>
+    </div>
+    <div class="lang-bar-row">
+      <span class="lang-name">Swift</span>
+      <div class="lang-track"><div class="lang-fill" style="width:18%;background:linear-gradient(90deg,#f05138,#f87c65)"></div></div>
+      <span class="lang-pct">18%</span>
+    </div>
+    <div class="lang-bar-row" style="margin-bottom:0">
+      <span class="lang-name">Rust</span>
+      <div class="lang-track"><div class="lang-fill" style="width:10%;background:linear-gradient(90deg,#e85d04,#f5813f)"></div></div>
+      <span class="lang-pct">10%</span>
+    </div>
+  </div>
+
+  <!-- ACTIVITY VIS -->
+  <div class="section-label" data-animate>activity heatmap</div>
+  <div class="activity-section" data-animate>
+    <canvas id="activity-canvas" height="120"></canvas>
+  </div>
+
+  <!-- TERMINAL -->
+  <div class="section-label" data-animate>quick.start</div>
+  <div class="terminal" data-animate>
+    <div class="terminal-bar">
+      <div class="t-dot" style="background:#ff5f57"></div>
+      <div class="t-dot" style="background:#febc2e"></div>
+      <div class="t-dot" style="background:#28c840"></div>
+      <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b7280">wslang — interactive</span>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="profile-footer">
+    <span class="footer-name">l12-krts</span>
+    <span class="footer-copy">Athens, Greece &mdash; 2026</span>
+  </div>
+
+</main>
+
+<script>
+  // intersection observer for data-animate
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+  // wslang canvas visualizer
+  (function() {
+    const canvas = document.getElementById('wslang-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    let t = 0;
+
+    const lines = [
+      { text: '# Well Simple Language', color: '#6b7280', x: 12 },
+      { text: 'x = 42', color: '#f5deb3', x: 12 },
+      { text: 'name = "Athens"', color: '#86efac', x: 12 },
+      { text: 'canvas.drawCircle(', color: '#7dd3fc', x: 12 },
+      { text: '  100, 50, 30, "gold"', color: '#c9933a', x: 12 },
+      { text: ')', color: '#7dd3fc', x: 12 },
+      { text: 'hash.sha256(name)', color: '#c084fc', x: 12 },
+    ];
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#0d1117';
+      ctx.fillRect(0, 0, W, H);
+
+      // animated circle
+      const cx = 170, cy = 60, r = 28;
+      ctx.beginPath();
+      const ang = (t * 0.03) % (Math.PI * 2);
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(201,147,58,0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + ang * 2);
+      ctx.strokeStyle = '#c9933a';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      const dotX = cx + r * Math.cos(-Math.PI / 2 + ang * 2);
+      const dotY = cy + r * Math.sin(-Math.PI / 2 + ang * 2);
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#f5deb3';
+      ctx.fill();
+
+      // code lines
+      ctx.font = '10px "JetBrains Mono", monospace';
+      lines.forEach((line, i) => {
+        const lineT = Math.max(0, Math.min(1, (t - i * 6) / 12));
+        ctx.globalAlpha = lineT;
+        ctx.fillStyle = line.color;
+        const chars = Math.floor(line.text.length * lineT);
+        ctx.fillText(line.text.slice(0, chars), line.x, 16 + i * 14);
+      });
+      ctx.globalAlpha = 1;
+
+      t++;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // activity heatmap
+  (function() {
+    const canvas = document.getElementById('activity-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth || 1100;
+    const W = canvas.width, H = 120;
+    canvas.height = H;
+
+    const weeks = 52;
+    const days = 7;
+    const cellSize = Math.floor((W - 40) / weeks);
+    const startX = 20;
+    const startY = 20;
+
+    const seed = (w, d) => {
+      const base = Math.sin(w * 7 + d * 3 + 1.5) * 0.5 + 0.5;
+      // more activity in recent weeks
+      const recency = 0.3 + 0.7 * (w / weeks);
+      const spike = (w > 40 && w < 50) ? 1.5 : 1;
+      return Math.min(1, base * recency * spike);
+    };
+
+    function levelColor(v) {
+      if (v < 0.1) return '#161b22';
+      if (v < 0.3) return '#1a3a1a';
+      if (v < 0.5) return '#2a6b2a';
+      if (v < 0.7) return '#4a9e4a';
+      return '#c9933a';
+    }
+
+    // draw cells
+    for (let w = 0; w < weeks; w++) {
+      for (let d = 0; d < days; d++) {
+        const v = seed(w, d);
+        ctx.fillStyle = levelColor(v);
+        ctx.beginPath();
+        ctx.roundRect(startX + w * (cellSize + 1), startY + d * (cellSize + 1), cellSize, cellSize, 3);
+        ctx.fill();
+      }
+    }
+
+    // labels
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = 'rgba(201,169,110,0.5)';
+    months.forEach((m, i) => {
+      const x = startX + Math.floor(i * weeks / 12) * (cellSize + 1);
+      ctx.fillText(m, x, 16);
+    });
+
+    // legend
+    const legendX = W - 120, legendY = H - 12;
+    ctx.fillStyle = 'rgba(201,169,110,0.4)';
+    ctx.font = '9px "JetBrains Mono", monospace';
+    ctx.fillText('less', legendX, legendY);
+    [0.05, 0.25, 0.5, 0.75, 1].forEach((v, i) => {
+      ctx.fillStyle = levelColor(v);
+      ctx.beginPath();
+      ctx.roundRect(legendX + 30 + i * 13, legendY - 9, 10, 10, 2);
+      ctx.fill();
+    });
+    ctx.fillStyle = 'rgba(201,169,110,0.4)';
+    ctx.font = '9px "JetBrains Mono", monospace';
+    ctx.fillText('more', legendX + 100, legendY);
+  })();
+
+  // terminal typewriter
+  (function() {
+    const body = document.getElementById('terminal-body');
+    const lines = [
+      { html: '<span class="t-comment"># WSlang — well.. simple scripting</span>' },
+      { html: '<span class="t-prompt">$</span> <span class="t-cmd">./wslang</span>', delay: 600 },
+      { html: '<span class="t-key">name</span> = <span class="t-string">"l12-krts"</span>', delay: 300 },
+      { html: '<span class="t-key">projects</span> = [<span class="t-string">"wslang"</span>, <span class="t-string">"quicknote"</span>, <span class="t-string">"wpm"</span>]', delay: 300 },
+      { html: '<span class="t-key">for</span> p <span class="t-key">in</span> projects', delay: 250 },
+      { html: '  <span class="t-cmd">print</span>(<span class="t-string">"building: "</span> + p)', delay: 200 },
+      { html: '<span class="t-key">end</span>', delay: 200 },
+      { html: '<span class="t-comment"># building: wslang</span>', delay: 400 },
+      { html: '<span class="t-comment"># building: quicknote</span>', delay: 300 },
+      { html: '<span class="t-comment"># building: wpm</span>', delay: 300 },
+      { html: '<span class="t-prompt">$</span> <span class="t-cursor"></span>', delay: 500 },
+    ];
+
+    let i = 0;
+    let accDelay = 800;
+
+    lines.forEach((line) => {
+      accDelay += (line.delay || 200);
+      const d = accDelay;
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.innerHTML = line.html;
+        body.appendChild(div);
+      }, d);
+    });
+  })();
+</script>
+
+</body>
+</html>
